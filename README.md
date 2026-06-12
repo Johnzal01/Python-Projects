@@ -1,8 +1,6 @@
 # Welcome to my Python Projects! 🐍
 
-This repository is a collection of projects I created using Python.
-
-Any help on how to improve my code is appreciated!
+This is a collection of projects I created using Python.
 
 ## Projects ⭐
 
