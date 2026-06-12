@@ -10,6 +10,6 @@ Any help on how to improve my code is appreciated!
 This is an interactive text based game where you're stuck in the middle of nowhere and try to find a way out.
 
 ### [Number Guessing Game](./Guessing%20Game/) 🔢
-This is a text-based number guessing game where the player tries to guess a secret number.
+This is a text-based number guessing game where you try to guess a secret number.
 
 Any help on how to improve my code is appreciated! ⭐
