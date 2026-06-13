@@ -1,0 +1,128 @@
+def start_game():
+    print("\n" + "="*40)
+    print("Welcome to the Adventure Game!")
+    print("Imagine yourself stranded in the middle of a dark forest with nobody to guide you to freedom.")
+    print("Your goal is to find a way out of the forest.")
+    print("Good luck. (You can type 'quit' at any time to leave)")
+    print("You currently can only turn left or right.")
+    print("="*40)
+
+    score = 0
+
+    decision = input("What is your next move?: ").lower()
+    check_for_quit(decision)
+    
+    while decision not in ["left", "right"]:
+        print("Enter a valid decision.")
+        decision = input("What is your next move? (left/right): ").lower()
+        check_for_quit(decision)
+
+    if decision == "left":
+        score += 10
+        print("\nYou turn left and see a pack of wolves in the distance.")
+        print("They have not noticed you yet.")
+        print("Do you go closer and risk dying or look the other way and go as far as possible from them?")
+        
+        decision = input("Go closer or look the other way?: ").lower()
+        check_for_quit(decision)
+        while decision not in ["go closer", "look the other way"]:
+            print("Enter a valid decision.")
+            decision = input("Go closer or look the other way?: ").lower()
+            check_for_quit(decision)
+
+        if decision == "go closer":
+            print("\nYou go closer and they start noticing you one by one, you try running but it doesn't work. You end up dying.")
+            score += 5
+            return end_game(score, won=False)
+            
+        elif decision == "look the other way":
+            score += 15
+            print("\nYou decide to leave the wolf pack alone and look the other way.")
+            print("You notice something glowing in the distance.")
+            
+            decision = input("Do you go for the item that is glowing? (yes/no): ").lower()
+            check_for_quit(decision)
+            while decision not in ["yes", "no"]:
+                print("Enter a valid decision.")
+                decision = input("Do you go for the item that is glowing? (yes/no): ").lower()
+                check_for_quit(decision)
+
+            if decision == "yes":
+                score += 30
+                print("\nYou end up finding an item that magically got you out of the dark forest!")
+                return end_game(score, won=True)
+            elif decision == "no":
+                score += 10
+                print("\nYou do not go for the item that is glowing.")
+                print("You step on a sleeping bear on accident.")
+                print("It wakes up, looks at you, and eats you alive.")
+                return end_game(score, won=False)
+
+    elif decision == "right":
+        score += 10
+        print("\nYou turn right and see a small house in the distance.")
+        print("Do you go inside or hide behind a tree?")
+        
+        decision = input("Go inside or Hide?: ").lower()
+        check_for_quit(decision)
+        while decision not in ["go inside", "hide"]:
+            print("Enter a valid decision.")
+            decision = input("Go inside or Hide?: ").lower()
+            check_for_quit(decision)
+
+        if decision == "go inside":
+            score += 15
+            print("\nYou go inside the house and see an old man holding an axe.")
+            print("He stares at you and is getting ready to swing.")
+            print("Do you fight back or run away from the house?")
+            
+            decision = input("Fight back or leave?: ").lower()
+            check_for_quit(decision)
+            while decision not in ["fight back", "leave"]:
+                print("Enter a valid decision.")
+                decision = input("Fight back or leave?: ").lower()
+                check_for_quit(decision)
+
+            if decision == "fight back":
+                score += 10
+                print("\nYou made the dumb decision of fighting back.")
+                print("You end up losing and dying.")
+                return end_game(score, won=False)
+            elif decision == "leave":
+                print("\nYou decided to escape the house.")
+                print("You somehow made it out alive.")
+                print("While walking, you see a bright yellow item.")
+                print("You pick it up and manage to escape the dark forest.")
+                score += 30
+                return end_game(score, won=True)
+                
+        elif decision == "hide":
+            score += 10
+            print("\nYou decide to not go towards the house and instead hide behind a tree.")
+            print("While hiding, you hear footsteps behind you.")
+            print("You turn around and see a wild boar.")
+            print("It attacks you and you end up dying.")
+            return end_game(score, won=False)
+
+
+def check_for_quit(user_input):
+    if user_input in ["quit", "exit"]:
+        print("\nThank you for playing! Goodbye.")
+        exit()
+
+def end_game(final_score, won):
+    if won:
+        print("\nCongratulations! You have won!!!")
+    else:
+        print("\nYou have died.")
+        
+    print(f"Your final score is: {final_score}")
+    
+    play = input("\nDo you want to play again? (yes/no): ").lower()
+    if play == "yes":
+        start_game()
+    else:
+        print("Hope to see you again soon!")
+
+
+start_game()
